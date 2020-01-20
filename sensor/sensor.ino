@@ -25,7 +25,6 @@ double getVPP()
 {
   double maxVp = 0;
   double minVp = 1024;
-  // Sample for one second to get accurate values
   double start = millis();
   while ((millis() - start) < READ_LENGTH)
   {
@@ -39,7 +38,6 @@ double getVPP()
       minVp = reading;
     }
   }
-  // Constants are emperically determined
   Serial.println(maxVp);
   Serial.println(minVp);
   return ((maxVp - minVp) * 2.77453) / 1024.0;
