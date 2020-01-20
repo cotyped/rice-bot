@@ -3,8 +3,10 @@ library:
 copyright: 2020 Author name here
 maintainer: example@example.com
 dependencies:
+- bytestring
 - text
 - discord-haskell
+- serialport
 - base >= 4.7 && < 5
 name: rice-bot
 version: 0.1.0.0

@@ -1,3 +1,4 @@
 .stack-work/
 rice-bot.cabal
 *~
+*.secret

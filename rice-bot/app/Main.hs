@@ -18,9 +18,11 @@ main = pingpongExample
 -- | Replies "pong" to every message that starts with "ping"
 pingpongExample :: IO ()
 pingpongExample = do
-  userFacingError <- runDiscord $ def { discordToken = "NjY4NjE4MjI5NDAwNDY5NTA0.XiT8TA.frOW6m5pex6liG8D7D5te7s8-aU"
-                                      , discordOnEvent = eventHandler
-                                      }
+  token        <- TIO.readFile "token.secret"
+  userFacingError <- runDiscord $ def
+    { discordToken   = token
+    , discordOnEvent = eventHandler
+    }
   TIO.putStrLn userFacingError
 
 eventHandler :: DiscordHandle -> Event -> IO ()
