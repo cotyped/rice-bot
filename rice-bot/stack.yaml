@@ -1,8 +1,0 @@
-resolver: lts-14.20
-
-packages:
-- .
-
-extra-deps:
-- emoji-0.1.0.2
-- discord-haskell-1.2.0
