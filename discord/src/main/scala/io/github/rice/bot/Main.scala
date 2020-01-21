@@ -21,11 +21,11 @@ object Main extends App {
   val reader = new BufferedReader(new InputStreamReader(port.getInputStream))
   reader.lines().forEach(x => {
     try {
-      val Array(voltage, amps, power, min, max, duration) = x.split(',')
+      val Array(voltage, amps, power, max, min, duration) = x.split(',')
 
       jda.getTextChannelsByName("rice", true).forEach(channel =>
         channel
-          .sendMessage(s"Voltage: $voltage, Amps: $amps, Power: $power, Min: $min, Max: $max, Duration: $duration")
+          .sendMessage(s"Voltage: $voltage, Amps: $amps, Power: $power, Max: $max, Min: $min, Duration: $duration")
           .queue()
       )
     } catch  {
