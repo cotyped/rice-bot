@@ -20,19 +20,16 @@ object Main extends App {
 
   val reader = new BufferedReader(new InputStreamReader(port.getInputStream))
   reader.lines().forEach(x => {
-    if (x.startsWith("Voltage: ")) {
-      voltage = x.substring("Voltage: ".length).toDouble
+    try {
+      val Array(voltage, amps, power, min, max, duration) = x.split(',')
+
+      jda.getTextChannelsByName("rice", true).forEach(channel =>
+        channel
+          .sendMessage(s"Voltage: $voltage, Amps: $amps, Power: $power, Min: $min, Max: $max, Duration: $duration")
+          .queue()
+      )
+    } catch  {
+      case e: Exception => e.printStackTrace()
     }
-    if (x.startsWith("Amps: ")) {
-      amps = x.substring("Amps: ".length).toDouble
-    }
-    if (x.startsWith("Power: ")) {
-      power = x.substring("Power: ".length).toDouble
-    }
-    jda.getTextChannelsByName("rice", true).forEach(channel =>
-      channel
-        .sendMessage(s"Voltage: ${voltage}, Amps: ${amps}, Power: ${power}")
-        .queue()
-    )
   })
 }
