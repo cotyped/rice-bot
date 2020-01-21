@@ -7,7 +7,7 @@ import com.fazecast.jSerialComm.SerialPort
 import net.dv8tion.jda.api.JDABuilder
 
 object Main extends App {
-  val token = new String(Files.readAllBytes(new File("./token.secret").toPath))
+  val token = Files.readAllLines(new File("token.secret").toPath).get(0)
   val jda = new JDABuilder(token).build()
 
   val port = SerialPort.getCommPorts()(0)
