@@ -14,10 +14,6 @@ object Main extends App {
   port.openPort()
   port.setComPortTimeouts(SerialPort.TIMEOUT_READ_SEMI_BLOCKING, 0, 0)
 
-  var voltage = 0.0
-  var amps = 0.0
-  var power = 0.0
-
   val reader = new BufferedReader(new InputStreamReader(port.getInputStream))
   reader.lines().forEach(x => {
     try {
